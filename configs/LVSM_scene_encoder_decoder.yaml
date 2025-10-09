@@ -61,12 +61,9 @@ training:
   use_tf32: true
   view_selector:
     type: two_frame
-    max_frame_dist: 64
-    min_frame_dist: 96
-    use_curriculum: true
-    curriculum_iter: 30000
-    curriculum_start_min_frame_dist: 48
-    curriculum_start_max_frame_dist: 64
+    max_frame_dist: 96
+    min_frame_dist: 64
+    use_curriculum: false
   vis_every: 1000
   wandb_exp_name: LVSM_encoder_decoder_dl3dv
   wandb_log_every: 50
