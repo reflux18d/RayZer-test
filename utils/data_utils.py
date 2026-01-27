@@ -249,9 +249,11 @@ class SplitData(nn.Module):
             input_dict[key] = value[batch_idx, input_pattern, ...]
             target_dict[key] = value[batch_idx, target_pattern, ...]
         
-        # input_dict['scene_name'] = data_batch['scene_name']
-        # target_dict['scene_name'] = data_batch['scene_name']
-                
+        # propagate scene_name so downstream code can reference it (e.g. metrics export)
+        if 'scene_name' in data_batch:
+            input_dict['scene_name'] = data_batch['scene_name']
+            target_dict['scene_name'] = data_batch['scene_name']
+
         return edict(input_dict), edict(target_dict), input_pattern, target_pattern
 
 
